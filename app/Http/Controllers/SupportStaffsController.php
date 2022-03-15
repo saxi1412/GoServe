@@ -16,8 +16,12 @@ class SupportStaffsController extends Controller
      */
     public function support()
     {
-        $supportstaffs= DB::table('users')->where('type',4)->paginate(10);
+        $supportstaffs= DB::table('users')->where('type',4)->latest("id")->paginate(10);
         return view('supportstaffs',['supportstaffs'=>$supportstaffs]);
+    }
+    public function addsupportstaff()
+    {
+        return view('addsupportstaff');
     }
 
     /**

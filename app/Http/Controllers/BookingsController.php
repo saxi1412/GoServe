@@ -15,17 +15,16 @@ class BookingsController extends Controller
      */
     public function book(Request $request)
     {
-        $search= $request['search'] ?? "";
-        if($search !=""){
-            $bookings=DB::table('bookings','search')->where('assigned_ids','LIKE',"%$search%")->get();
+        
 
-        }else{
-            $bookings=DB::table('bookings','search')->get();
-        }
-
-        $bookings=DB::table('bookings','search')->paginate(10);
+        $bookings=DB::table('bookings','search')->latest("id")->paginate(10);
         return view('bookings',['bookings'=>$bookings]);
 
+    }
+
+    public function generateinvoice(){
+
+        return view('invoice');
     }
 
     /**

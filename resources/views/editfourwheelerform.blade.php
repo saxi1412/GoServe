@@ -74,6 +74,12 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../addnewvehicle" class="nav-link ">
+                        <i class="fa-solid fa-plus"></i>
+                      <p>Add New Vehicle</p>
+                    </a>
+                  </li>
                 <li class="nav-item">
                   <a href="../twowheeler" class="nav-link ">
                     <i class="fa-solid fa-motorcycle"></i>
@@ -124,27 +130,22 @@
                   </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../bookings" class="nav-link">
                   <i class="fa-regular fa-calendar-check"></i>
                   <p>
                     Bookings 
-                    <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="../consistentbooking" class="nav-link">
-                      <i class="fa-solid fa-recycle"></i>
-                      <p>Consistent Service</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../rsabooking" class="nav-link">
-                      <i class="fa-solid fa-road"></i>
-                      <p>RSA Service</p>
-                    </a>
-                  </li>
-                </ul>
+                
+              </li>
+              <li class="nav-item">
+                <a href="../notifications" class="nav-link">
+                  <i class="fa-solid fa-bell"></i>
+                  <p>
+                    Notifications
+                  </p>
+                </a>
+               
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -155,6 +156,18 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../parts" class="nav-link">
+                      <i class="fa-solid fa-clone"></i>
+                      <p>Parts</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../jobcard" class="nav-link">
+                        <i class="fa-solid fa-address-card"></i>
+                      <p>Job Card</p>
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a href="../consistentservice" class="nav-link">
                       <i class="fa-solid fa-recycle"></i>
@@ -167,6 +180,29 @@
                       <p>RSA Service</p>
                     </a>
                   </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-store"></i>       
+                        <p>
+                    EV Store
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../products" class="nav-link ">
+                      <i class="fa-solid fa-boxes-stacked"></i>
+                      <p>Products</p>
+                    </a>
+                  </li>
+                <li class="nav-item">
+                  <a href="../request" class="nav-link ">
+                    <i class="fa-solid fa-code-pull-request"></i>
+                    <p>Request</p>
+                  </a>
+                </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -193,7 +229,14 @@
                   </p>
                 </a>
               </li>
-              
+              <li class="nav-item">
+                <a href="../offers" class="nav-link">
+                    <i class="fa-solid fa-gift"></i>
+                  <p>
+                    Offers
+                  </p>
+                </a>  
+              </li> 
             </nav>
         </div>  
     </aside>
@@ -214,21 +257,34 @@
               </div>
             </div>
               <div class="card-body">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
             
-              
+              <div class="mb-3">
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" id="id" name="id" value="{{ $fourwheelers->id }}" value="{{ old('id') }}">
+                <span class="text-danger">
+                  @error('id')
+                    {{ $message }}
             
+                  @enderror
+                </span>
+              </div>
+            
+              
+               
               <div class="mb-3">
                 <label for="company_name" class="form-label">Company Name</label>
-                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ $fourwheelers->company_name }}" value="{{ old('company_name') }}">
+                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ $fourwheelers->company_name }}"value="{{ old('company_name') }}">
                 <span class="text-danger">
                   @error('company_name')
                     {{ $message }}
                   @enderror
                 </span>
               </div>
+              
+            
               <div class="mb-3">
                 <label for="model_name" class="form-label">Model Name</label>
                 <input type="text" class="form-control" id="model_name" name="model_name" value="{{ $fourwheelers->model_name }}" value="{{ old('model_name') }}">
@@ -238,42 +294,27 @@
                   @enderror
                 </span>
               </div>
+              
               <div class="mb-3">
-                <label for="number_plate" class="form-label">Number Plate</label>
-                <input type="text" class="form-control" id="number_plate" name="number_plate" value="{{ $fourwheelers->number_plate }}" value="{{ old('number_plate') }}">
+                <div class="form-group">
+                  <label>Fuel Type</label>
+                  <select id="fuel_type" class="form-control select2" style="width: 100%;">
+                      <option value='Petrol'>Petrol</option>
+                      <option value='Diesel'>Diesel</option>
+                      <option value='CNG'>CNG</option>
+                  </select>
+                </div>
+            </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" id="image" name="image" value="{{ $fourwheelers->image }}" >
                 <span class="text-danger">
-                  @error('number_plate')
+                  @error('image')
                     {{ $message }}
                   @enderror
                 </span>
               </div>
-              <div class="mb-3">
-                <label for="year_of_manufacturing" class="form-label">Year Of Manufacturing</label>
-                <input type="number" class="form-control" id="year_of_manufacturing" name="year_of_manufacturing" value="{{ $fourwheelers->year_of_manufacturing }}" value="{{ old('year_of_manufacturing') }}">
-                <span class="text-danger">
-                  @error('year_of_manufacturing')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="colour" class="form-label">Colour</label>
-                <input type="text" class="form-control" id="colour" name="colour" value="{{ $fourwheelers->colour }}" value="{{ old('colour') }}">
-                <span class="text-danger">
-                  @error('colour')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="fuel_type" class="form-label">Fuel Type</label>
-                <input type="text" class="form-control" id="fuel_type" name="fuel_type" value="{{ $fourwheelers->fuel_type }}" value="{{ old('fuel_type') }}">
-                <span class="text-danger">
-                  @error('fuel_type')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
+              <input type="hidden" id="ftype" name="ftype" value="Petrol"/>
 
               <button type="submit" class="btn btn-primary">Update</button>
             </form>
@@ -292,24 +333,7 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="../plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="../plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="../plugins/moment/moment.min.js"></script>
-<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="../plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
+
 <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.js"></script>
@@ -317,6 +341,11 @@
 <script src="../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard.js"></script>
+<script>
+    $("#fuel_type").change(function(){
+      $("#ftype").val($('#fuel_type').find(":selected").val());
+    });
+</script>
 
 </body>
 </html>

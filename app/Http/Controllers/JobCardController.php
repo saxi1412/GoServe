@@ -6,18 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class AddOfferController extends Controller
+class JobCardController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function addoffer()
+    public function jobcard()
     {
-        $offers=DB::table('offers')->get();
-        return view('addoffer',['offers'=>$offers]);
-
+        $jobcard = DB::table('jobcard')->get();
+        return view('jobcard', ['jobcard' => $jobcard]);
     }
 
     /**
@@ -25,26 +24,10 @@ class AddOfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createoffer(Request $request)
+    public function create()
     {
-        if($request->hasFile('image')){
-            $file =$request->file('image');
-            $extension =$file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $filepath='/dist/images/offers/'.$filename;
-            // $file->storeAs('servicesimg/',$filename);
-            $request->image->move(public_path('dist/images/offers'), $filename);
-            DB::table('offers')->insert([
-        
-                'image'=> $filepath,
-                
-            ]);
-    
-        }
-       
-        return redirect(route('addoffer'));
+        //
     }
-
 
     /**
      * Store a newly created resource in storage.

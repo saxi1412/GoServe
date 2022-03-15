@@ -15,7 +15,7 @@ class RsaServiceController extends Controller
      */
     public function rservice()
     {
-        $rsaservices= DB::table('services')->where('rsa','1')->paginate(10);
+        $rsaservices= DB::table('services')->where('rsa','1')->latest("id")->paginate(10);
         return view('rsaservice',['rsaservices'=> $rsaservices]);
     }
 

@@ -13,11 +13,30 @@ class EmployeesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function emp()
+    public function emp(Request $request)
     {
-        $employees= DB::table('users')->where('type',1)->paginate(10);
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $employees= DB::table('users')->where('name','LIKE', "%$search%")->orWhere('email','LIKE', "%$search%")->get();
+        }else{
+            $employees= DB::table('users')->where('type',1)->latest("id")->paginate(10);
+        }
+        $data =compact('employees','search');
         return view('employees',['employees'=>$employees]);
     }
+    public function addemployee()
+    {
+        return view('addemployee');
+    }
+    public function search()
+    {
+        $search_text = $_GET['query'];
+        $employees= DB::table('users')->where('type',1)->where('title','LIKE','%'.$search_text.'%')->latest("id")->get();
+
+        return view('products.search',compact('products'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

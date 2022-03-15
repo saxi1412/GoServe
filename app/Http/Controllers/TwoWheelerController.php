@@ -15,7 +15,7 @@ class TwoWheelerController extends Controller
     public function index(Request $request)
     {
         
-        $twowheelers=DB::table('vehicles')->where("vehicle_type","two wheeler")->paginate(10);
+        $twowheelers=DB::table('vehicles')->where("vehicle_type","two wheeler")->latest("id")->paginate(10);
         return view('twowheeler',['twowheelers'=>$twowheelers]);
 
     }
@@ -61,7 +61,8 @@ class TwoWheelerController extends Controller
      */
     public function edittwowheeler($id)
     {
-      
+        $twowheelers= DB::table('vehicles')->find($id);
+        return view('edittwowheelerform',['twowheelers'=>$twowheelers]);
     }
 
     /**
@@ -74,6 +75,27 @@ class TwoWheelerController extends Controller
     public function updatetwowheeler(Request $request, $id)
     {
 
+        if($request->hasFile('image')){
+            $file =$request->file('image');
+            $extension =$file->getClientOriginalExtension();
+            $filename= time().'.'.$extension;
+            $filepath='/dist/images/vehicles/'.$filename;
+            // $file->storeAs('servicesimg/',$filename);
+            $request->image->move(public_path('dist/images/vehicles'), $filename);
+            DB::table('vehicles')->where('id', $id)->update([
+              
+                'image'=> $filepath,
+            ]);
+        }
+        DB::table('vehicles')->where('id', $id)->update([
+            'company_name' => $request->company_name,
+            'model_name' =>$request->model_name,
+            'fuel_type' => $request->ftype,
+            
+        ]);
+
+        return redirect(route('index'));
+
     }
 
     /**
@@ -84,6 +106,7 @@ class TwoWheelerController extends Controller
      */
     public function destroytwowheeler($id)
     {
-        
+        DB::table('vehicles')->where('id',$id)->delete();
+        return redirect(route('index'));
     }
 }

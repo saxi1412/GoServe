@@ -15,14 +15,19 @@ class OffersController extends Controller
      */
     public function offer()
     {
-        $offers=DB::table('offers')->paginate(10);
+        $offers=DB::table('offers')->latest("id")->paginate(10);
         return view('offers',['offers'=>$offers]);
 
     }
-    
-    public function storeoffer(Request $request,$id)
+    public function addoffer()
     {
-        DB::table('offers')->find($id);
+        
+        return view('addoffer');
+    }
+    
+    public function createoffer(Request $request)
+    {
+       
        
         if($request->hasFile('image')){
             $file =$request->file('image');
@@ -31,11 +36,13 @@ class OffersController extends Controller
             $filepath='dist/images/offers/'.$filename;
             // $file->storeAs('servicesimg/',$filename);
             $request->image->move(public_path('dist/images/offers'), $filename);
-            DB::table('offers')->where('id', $id)->update([
+            DB::table('offers')->insert([
                 'image'=> $filepath,
                ]);
+    
         }
-
+        
+        
        
 
         return redirect(route('offer'));

@@ -16,9 +16,14 @@ class CustomersController extends Controller
     public function cust()
     {
        
-        $customers= DB::table('users')->where('type',2)->paginate(10);
+        $customers= DB::table('users')->where('type',2)->latest("id")->paginate(10);
         return view('customers',['customers'=>$customers]);
     }
+    public function addcustomer()
+    {
+        return view('addcustomer');
+    }
+
 
     /**
      * Show the form for creating a new resource.

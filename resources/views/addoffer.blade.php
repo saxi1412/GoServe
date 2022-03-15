@@ -74,6 +74,12 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../addnewvehicle" class="nav-link ">
+                        <i class="fa-solid fa-plus"></i>
+                      <p>Add New Vehicle</p>
+                    </a>
+                  </li>
                 <li class="nav-item">
                   <a href="../twowheeler" class="nav-link ">
                     <i class="fa-solid fa-motorcycle"></i>
@@ -131,6 +137,16 @@
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a href="../notifications" class="nav-link">
+                  <i class="fa-solid fa-bell"></i>
+                  <p>
+                    Notifications
+                  </p>
+                </a>
+               
+              </li>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="../consistentbooking" class="nav-link">
@@ -156,6 +172,18 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
+                    <a href="../parts" class="nav-link">
+                      <i class="fa-solid fa-clone"></i>
+                      <p>Parts</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../jobcard" class="nav-link">
+                        <i class="fa-solid fa-address-card"></i>
+                      <p>Job Card</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="../consistentservice" class="nav-link">
                       <i class="fa-solid fa-recycle"></i>
                       <p>Consistent Service</p>
@@ -167,6 +195,29 @@
                       <p>RSA Service</p>
                     </a>
                   </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-store"></i>       
+                        <p>
+                    EV Store
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../products" class="nav-link ">
+                      <i class="fa-solid fa-boxes-stacked"></i>
+                      <p>Products</p>
+                    </a>
+                  </li>
+                <li class="nav-item">
+                  <a href="../request" class="nav-link ">
+                    <i class="fa-solid fa-code-pull-request"></i>
+                    <p>Request</p>
+                  </a>
+                </li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -219,9 +270,9 @@
               <div class="card-header">
                 <h4>Add Offer</h4>
               </div>
-            </div>
+            </div> 
               <div class="card-body">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
               @csrf
              
           

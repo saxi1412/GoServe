@@ -131,21 +131,17 @@
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="../consistentbooking" class="nav-link">
-                      <i class="fa-solid fa-recycle"></i>
-                      <p>Consistent Service</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="../rsabooking" class="nav-link">
-                      <i class="fa-solid fa-road"></i>
-                      <p>RSA Service</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
+              <li class="nav-item">
+                <a href="../notifications" class="nav-link">
+                  <i class="fa-solid fa-bell"></i>
+                  <p>
+                    Notifications
+                  </p>
+                </a>
+               
+              </li>
+                
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -155,6 +151,12 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../parts" class="nav-link">
+                      <i class="fa-solid fa-clone"></i>
+                      <p>Parts</p>
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a href="../consistentservice" class="nav-link">
                       <i class="fa-solid fa-recycle"></i>

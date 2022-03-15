@@ -17,8 +17,12 @@ class GarageController extends Controller
     public function gar()
     {
         
-        $garage= DB::table('users')->where('type',3)->paginate(10);
+        $garage= DB::table('users')->where('type',3)->latest("id")->paginate(10);
         return view('garage',['garage'=>$garage]);
+    }
+    public function addgarage()
+    {
+        return view('addgarage');
     }
 
     /**

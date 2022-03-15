@@ -158,7 +158,15 @@
             </a>
             
           </li>
-          
+          <li class="nav-item">
+            <a href="../notifications" class="nav-link">
+              <i class="fa-solid fa-bell"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+           
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -168,6 +176,18 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../parts" class="nav-link">
+                  <i class="fa-solid fa-clone"></i>
+                  <p>Parts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../jobcard" class="nav-link">
+                    <i class="fa-solid fa-address-card"></i>
+                  <p>Job Card</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../consistentservice" class="nav-link">
                   <i class="fa-solid fa-recycle"></i>
@@ -189,6 +209,29 @@
                 Reports
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-store"></i>       
+                    <p>
+                EV Store
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../products" class="nav-link ">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../request" class="nav-link ">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <p>Request</p>
+              </a>
+            </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="../complaints" class="nav-link">
@@ -229,59 +272,13 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-header">
-                <h4>Customers Data</h4>
+                <h4>Customers
+                    <a href="../addcustomer" class="btn btn-primary float-right btn-sm">
+                        Add Customer
+                       </a>
+                </h4>
               </div>
             </div>
-              <div class="card-body">
-
-          <form action="" method="POST">
-            @csrf
-            
-          
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
-              <span class="text-danger">
-                @error('name')
-                  {{ $message }}
-                @enderror
-              </span>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email Id</label>
-              <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
-              <span class="text-danger">
-                @error('email')
-                  {{ $message }}
-                @enderror
-              </span>
-            </div>
-            <div class="mb-3">
-              <label for="number" class="form-label">Number</label>
-              <input type="number" class="form-control" id="number" name="number" value="{{ old('number') }}">
-              <span class="text-danger">
-                @error('number')
-                  {{ $message }}
-                @enderror
-              </span>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}">
-              <span class="text-danger">
-                @error('password')
-                  {{ $message }}
-                @enderror
-              </span>
-            </div>
-           
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          
-
-
-         </div>
          <div class="col-sm-6">
           <table class="table table-hover">
             <thead>
@@ -323,11 +320,12 @@
           </tbody>
           </table>
           {{ $customers->links() }}
+        
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
     <!-- /.content-header -->
 

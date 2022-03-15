@@ -5,29 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GoServe | Admin</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     
@@ -35,7 +33,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/goserveic.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="../dist/img/goserveic.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -51,7 +49,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-    
+     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -60,17 +58,14 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="dashboard" class="brand-link">
-      <img src="dist/img/goserveic.png" alt="AdminLTE Logo" class="brand-image">
-      <img src="dist/img/serveic.png" alt="AdminLTE Logo" class="brand-text" >
+      <img src="../dist/img/goserveic.png" alt="AdminLTE Logo" class="brand-image">
+      <img src="../dist/img/serveic.png" alt="AdminLTE Logo" class="brand-text" >
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
      
-      <!-- SidebarSearch Form -->
-     
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -156,10 +151,17 @@
               <p>
                 Bookings 
               </p>
-            </a>
-            
+            </a>  
           </li>
-          
+          <li class="nav-item">
+            <a href="../notifications" class="nav-link">
+              <i class="fa-solid fa-bell"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+           
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -169,6 +171,18 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../parts" class="nav-link">
+                  <i class="fa-solid fa-clone"></i>
+                  <p>Parts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../jobcard" class="nav-link">
+                    <i class="fa-solid fa-address-card"></i>
+                  <p>Job Card</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../consistentservice" class="nav-link">
                   <i class="fa-solid fa-recycle"></i>
@@ -181,6 +195,29 @@
                   <p>RSA Service</p>
                 </a>
               </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-store"></i>       
+                    <p>
+                EV Store
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../products" class="nav-link ">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../request" class="nav-link ">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <p>Request</p>
+              </a>
+            </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -207,6 +244,7 @@
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="../offers" class="nav-link">
                 <i class="fa-solid fa-gift"></i>
@@ -215,7 +253,6 @@
               </p>
             </a>  
           </li>
-            
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -230,186 +267,28 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-header">
-                <h4>Employees Data</h4>
+                <h4>Employees
+                    <a href="../addemployee" data-bs-toggle="modal" data-bs-target="#AddVehicleModal" class="btn btn-primary float-right btn-sm">
+                        Add Employee
+                       </a>
+                </h4>
               </div>
             </div>
-              <div class="card-body">
 
-            <form action="" method="POST">
-              @csrf
-              
-             
-          
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
-                <span class="text-danger">
-                  @error('name')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email Id</label>
-                <input type="text" class="form-control" id="email" name="email"  value="{{ old('email') }}">
-                <span class="text-danger">
-                  @error('email')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="number" class="form-label">Number</label>
-                <input type="number" class="form-control" id="number" name="number"  value="{{ old('number') }}">
-                <span class="text-danger">
-                  @error('number')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="residential_address" class="form-label">Residential Address</label>
-                <input type="text" class="form-control" id="residential_address" name="residential_address"  value="{{ old('residential_address') }}">
-                <span class="text-danger">
-                  @error('residential_address')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="aadhar_card_no" class="form-label">Aadhar Card No</label>
-                <input type="number" class="form-control" id="aadhar_card_no" name="aadhar_card_no"  value="{{ old('aadhar_card_no') }}">
-                <span class="text-danger">
-                  @error('aadhar_card_no')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="pan_card_no" class="form-label">Pan Card No</label>
-                <input type="text" class="form-control" id="pan_card_no" name="pan_card_no"  value="{{ old('pan_card_no') }}">
-                <span class="text-danger">
-                  @error('pan_card_no')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password"  value="{{ old('password') }}">
-                <span class="text-danger">
-                  @error('password')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="past_job_experience" class="form-label">Past Job Experience</label>
-                <input type="text" class="form-control" id="past_job_experience" name="past_job_experience"  value="{{ old('past_job_experience') }}">
-                <span class="text-danger">
-                  @error('past_job_experience')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="current_job_description" class="form-label">Current Job Description</label>
-                <input type="text" class="form-control" id="current_job_description" name="current_job_description"  value="{{ old('current_job_description') }}">
-                <span class="text-danger">
-                  @error('current_job_description')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="date_of_joining" class="form-label">Date Of Joining</label>
-                <input type="date" class="form-control" id="date_of_joining" name="date_of_joining"  value="{{ old('date_of_joining') }}">
-                <span class="text-danger">
-                  @error('date_of_joining')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="roles_and_responsibility" class="form-label">Role And Responsibility</label>
-                <input type="text" class="form-control" id="roles_and_responsibility" name="roles_and_responsibility"  value="{{ old('roles_and_responsibility') }}">
-                <span class="text-danger">
-                  @error('roles_and_responsibility')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="salary" class="form-label">Salary</label>
-                <input type="number" class="form-control" id="salary" name="salary"  value="{{ old('salary') }}">
-                <span class="text-danger">
-                  @error('salary')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="emergency_contact_number" class="form-label">Emergency Contact Number</label>
-                <input type="number" class="form-control" id="emergency_contact_number" name="emergency_contact_number"  value="{{ old('emergency_contact_number') }}">
-                <span class="text-danger">
-                  @error('emergency_contact_number')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-
-
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <form action="" class="col-9">
+               <div class="form-group">
+                  <input type="search" name="search" id="" class="form-control" placeholder="Search by name or email" />
+               </div>
+              <button class="btn btn-success">Search</button>
+              <a href="{{ url('/employees') }}">
+                 <button class="btn btn-primary" type="button">Reset</button>
+              </a>
             </form>
-          </div>
-
-          <div class="col-sm-4">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Id</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email Id</th>
-                  <th scope="col">Number</th>
-                  <th scope="col">Residential Address</th>
-                  <th scope="col">Aadhar Card No</th>
-                  <th scope="col">Pan Card No</th>
-                  <th scope="col">Password</th>
-                  <th scope="col">Past Job Experience</th>
-                  <th scope="col">Current Job Description</th>
-                  <th scope="col">Date Of Joining</th>
-                  <th scope="col">Roles And Responsibility</th>
-                  <th scope="col">Salary</th>
-                  <th scope="col">Emergency Contact Number</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($employees as $employee )
-                  <tr>
-                    <th>{{ $employee->id }}</th>
-                    <td>{{ $employee->name }}</td>
-                    <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->number }}</td>
-                    <td>{{ $employee->residential_address}}</td>
-                    <td>{{ $employee->aadhar_card_no}}</td>
-                    <td>{{ $employee->pan_card_no}}</td>
-                    <td>{{ $employee->password }}</td>
-                    <td>{{ $employee->past_job_experience }}</td>
-                    <td>{{ $employee->current_job_description}}</td>
-                    <td>{{ $employee->date_of_joining }}</td>
-                    <td>{{ $employee->roles_and_responsibility }}</td>
-                    <td>{{ $employee->salary }}</td>
-                    <td>{{ $employee->emergency_contact_number }}</td>
-                    <td>
-                      <a href="{{ url('../editemployee', $employee->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                      <a href="{{ url('../deleteemployee', $employee->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-              <tbody>
-                <tfoot>
+  
+              <div class="card-body">
+                
+                <table class="table table-hover">
+                  <thead>
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Name</th>
@@ -427,26 +306,62 @@
                       <th scope="col">Emergency Contact Number</th>
                       <th scope="col">Action</th>
                     </tr>
-                    </tfoot>
-            </tbody>
-            </table>
-            {{ $employees->links() }}
+                  </thead>
+                  <tbody>
+                    @foreach ($employees as $employee )
+                      <tr>
+                        <th>{{ $employee->id }}</th>
+                        <td>{{ $employee->name }}</td>
+                        <td>{{ $employee->email }}</td>
+                        <td>{{ $employee->number }}</td>
+                        <td>{{ $employee->residential_address}}</td>
+                        <td>{{ $employee->aadhar_card_no}}</td>
+                        <td>{{ $employee->pan_card_no}}</td>
+                        <td>{{ $employee->password }}</td>
+                        <td>{{ $employee->past_job_experience }}</td>
+                        <td>{{ $employee->current_job_description}}</td>
+                        <td>{{ $employee->date_of_joining }}</td>
+                        <td>{{ $employee->roles_and_responsibility }}</td>
+                        <td>{{ $employee->salary }}</td>
+                        <td>{{ $employee->emergency_contact_number }}</td>
+                        <td>
+                          <a href="{{ url('../editemployee', $employee->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                          <a href="{{ url('../deleteemployee', $employee->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                  <tbody>
+                    <tfoot>
+                        <tr>
+                          <th scope="col">Id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email Id</th>
+                          <th scope="col">Number</th>
+                          <th scope="col">Residential Address</th>
+                          <th scope="col">Aadhar Card No</th>
+                          <th scope="col">Pan Card No</th>
+                          <th scope="col">Password</th>
+                          <th scope="col">Past Job Experience</th>
+                          <th scope="col">Current Job Description</th>
+                          <th scope="col">Date Of Joining</th>
+                          <th scope="col">Roles And Responsibility</th>
+                          <th scope="col">Salary</th>
+                          <th scope="col">Emergency Contact Number</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                        </tfoot>
+                </tbody>
+                </table>
+                {{-- {{ $employees->links() }} --}}
+           
+              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-  
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-   
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-
+    
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -489,7 +404,24 @@
 <script src="../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+   $("#select1").change(function(){
+      $("#service1").val($('#select1').find(":selected").val());
+    });
+    $("#select2").change(function(){
+      $("#service2").val($('#select2').find(":selected").val());
+    });
+    $("#select3").change(function(){
+      $("#service3").val($('#select3').find(":selected").val());
+    });
+    $("#select4").change(function(){
+      $("#service4").val($('#select4').find(":selected").val());
+    });
+    $("#select5").change(function(){
+      $("#service5").val($('#select5').find(":selected").val());
+    });
+            
+</script>
 
 </body>
 </html>

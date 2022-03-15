@@ -36,9 +36,9 @@ class AddNewVehicleController extends Controller
         }
         DB::table('vehicles')->insert([
             'vehicle_type' => strtolower($request->vtype),
-            'company_name' => strtolower($request->company_name),
-            'model_name' => strtolower($request->model_name),
-            'fuel_type' => ucfirst($request->ftype),
+            'company_name' => $request->company_name,
+            'model_name' => $request->model_name,
+            'fuel_type' => $request->ftype,
             'image'=> $filepath,
         ]);
 

@@ -138,7 +138,15 @@
                 </a>
                
               </li>
-             
+              <li class="nav-item">
+                <a href="../notifications" class="nav-link">
+                  <i class="fa-solid fa-bell"></i>
+                  <p>
+                    Notifications
+                  </p>
+                </a>
+               
+              </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -148,6 +156,18 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../parts" class="nav-link">
+                      <i class="fa-solid fa-clone"></i>
+                      <p>Parts</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../jobcard" class="nav-link">
+                        <i class="fa-solid fa-address-card"></i>
+                      <p>Job Card</p>
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a href="../consistentservice" class="nav-link">
                       <i class="fa-solid fa-recycle"></i>
@@ -169,6 +189,29 @@
                     Reports
                   </p>
                 </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-store"></i>       
+                        <p>
+                    EV Store
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../products" class="nav-link ">
+                      <i class="fa-solid fa-boxes-stacked"></i>
+                      <p>Products</p>
+                    </a>
+                  </li>
+                <li class="nav-item">
+                  <a href="../request" class="nav-link ">
+                    <i class="fa-solid fa-code-pull-request"></i>
+                    <p>Request</p>
+                  </a>
+                </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a href="../complaints" class="nav-link">

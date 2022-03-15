@@ -156,7 +156,15 @@
             </a>
             
           </li>
-         
+          <li class="nav-item">
+            <a href="../notifications" class="nav-link">
+              <i class="fa-solid fa-bell"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+           
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -166,6 +174,18 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../parts" class="nav-link">
+                  <i class="fa-solid fa-clone"></i>
+                  <p>Parts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../jobcard" class="nav-link">
+                    <i class="fa-solid fa-address-card"></i>
+                  <p>Job Card</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../consistentservice" class="nav-link">
                   <i class="fa-solid fa-recycle"></i>
@@ -178,6 +198,29 @@
                   <p>RSA Service</p>
                 </a>
               </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-store"></i>       
+                    <p>
+                EV Store
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../products" class="nav-link ">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../request" class="nav-link ">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <p>Request</p>
+              </a>
+            </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -227,141 +270,14 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-header">
-                <h4>Garage Data</h4>
+                <h4>Garage
+                    <a href="../addgarage"  class="btn btn-primary float-right btn-sm">
+                        Add Garage
+                       </a>
+                </h4>
               </div>
             </div>
               <div class="card-body">
-  
-            <form action="" method="POST">
-              @csrf
-              
-            
-              <div class="mb-3">
-                <label for="garage_name" class="form-label">Garage Name</label>
-                <input type="text" class="form-control" id="garage_name" name="garage_name" value="{{ old('garage_name') }}">
-                <span class="text-danger">
-                  @error('garage_name')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="garage_number" class="form-label">Garage Number</label>
-                <input type="number" class="form-control" id="garage_number" name="garage_number"  value="{{ old('garage_number') }}">
-                <span class="text-danger">
-                  @error('garage_number')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="garage_email" class="form-label">Garage Email Id</label>
-                <input type="text" class="form-control" id="garage_email" name="garage_email"  value="{{ old('garage_email') }}">
-                <span class="text-danger">
-                  @error('garage_email')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="garage_address" class="form-label">Garage Address</label>
-                <input type="text" class="form-control" id="garage_address" name="garage_address"  value="{{ old('garage_address') }}">
-                <span class="text-danger">
-                  @error('garage_address')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="num_of_employees" class="form-label">Number Of Employees</label>
-                <input type="number" class="form-control" id="num_of_employees" name="num_of_employees"  value="{{ old('num_of_employees') }}">
-                <span class="text-danger">
-                  @error('num_of_employees')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="gst_no" class="form-label">GST No</label>
-                <input type="text" class="form-control" id="gst_no" name="gst_no"  value="{{ old('gst_no') }}">
-                <span class="text-danger">
-                  @error('gst_no')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="name" class="form-label">Owner Name</label>
-                <input type="text" class="form-control" id="name" name="name"  value="{{ old('name') }}">
-                <span class="text-danger">
-                  @error('name')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="number" class="form-label">Owner Number</label>
-                <input type="number" class="form-control" id="number" name="number"  value="{{ old('number') }}">
-                <span class="text-danger">
-                  @error('number')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Owner Email Id</label>
-                <input type="text" class="form-control" id="email" name="email"  value="{{ old('email') }}">
-                <span class="text-danger">
-                  @error('email')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="address" class="form-label">Owner Address</label>
-                <input type="text" class="form-control" id="address" name="address"  value="{{ old('address') }}">
-                <span class="text-danger">
-                  @error('address')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password"  value="{{ old('password') }}">
-                <span class="text-danger">
-                  @error('password')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="pan_card_no" class="form-label">Pan Card No</label>
-                <input type="text" class="form-control" id="pan_card_no" name="pan_card_no"  value="{{ old('pan_card_no') }}">
-                <span class="text-danger">
-                  @error('pan_card_no')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-             
-              <div class="mb-3">
-                <label for="service_type" class="form-label">Servie Type(According To Vehicle)</label>
-                <input type="text" class="form-control" id="service_type" name="service_type"  value="{{ old('service_type') }}">
-                <span class="text-danger">
-                  @error('service_type')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-  
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            
-  
-  
-           </div>
-           <div class="col-sm-6">
             <table class="table table-hover">
               <thead>
                 <tr>

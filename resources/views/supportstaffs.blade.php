@@ -157,7 +157,15 @@
             </a>
            
           </li>
-         
+          <li class="nav-item">
+            <a href="../notifications" class="nav-link">
+              <i class="fa-solid fa-bell"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+           
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -167,6 +175,18 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../parts" class="nav-link">
+                  <i class="fa-solid fa-clone"></i>
+                  <p>Parts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../jobcard" class="nav-link">
+                    <i class="fa-solid fa-address-card"></i>
+                  <p>Job Card</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../consistentservice" class="nav-link">
                   <i class="fa-solid fa-recycle"></i>
@@ -179,6 +199,29 @@
                   <p>RSA Service</p>
                 </a>
               </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-store"></i>       
+                    <p>
+                EV Store
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../products" class="nav-link ">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../request" class="nav-link ">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <p>Request</p>
+              </a>
+            </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -228,138 +271,14 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-header">
-                <h4>SupportStaffs Data</h4>
+                <h4>Support Staffs
+                    <a href="../addsupportstaff"  class="btn btn-primary float-right btn-sm">
+                        Add supportstaff
+                       </a>
+                </h4>
               </div>
             </div>
               <div class="card-body">
-
-            <form action="" method="POST">
-              @csrf
-              
-             
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
-                <span class="text-danger">
-                  @error('name')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email Id</label>
-                <input type="text" class="form-control" id="email" name="email"  value="{{ old('email') }}">
-                <span class="text-danger">
-                  @error('email')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="number" class="form-label">Number</label>
-                <input type="number" class="form-control" id="number" name="number"  value="{{ old('number') }}">
-                <span class="text-danger">
-                  @error('number')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="residential_address" class="form-label">Residential Address</label>
-                <input type="text" class="form-control" id="residential_address" name="residential_address"  value="{{ old('residential_address') }}">
-                <span class="text-danger">
-                  @error('residential_address')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="aadhar_card_no" class="form-label">Aadhar Card No</label>
-                <input type="number" class="form-control" id="aadhar_card_no" name="aadhar_card_no"  value="{{ old('aadhar_card_no') }}">
-                <span class="text-danger">
-                  @error('aadhar_card_no')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="pan_card_no" class="form-label">Pan Card No</label>
-                <input type="text" class="form-control" id="pan_card_no" name="pan_card_no"  value="{{ old('pan_card_no') }}">
-                <span class="text-danger">
-                  @error('pan_card_no')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password"  value="{{ old('password') }}">
-                <span class="text-danger">
-                  @error('password')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="past_job_experience" class="form-label">Past Job Experience</label>
-                <input type="text" class="form-control" id="past_job_experience" name="past_job_experience"  value="{{ old('past_job_experience') }}">
-                <span class="text-danger">
-                  @error('past_job_experience')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="current_job_description" class="form-label">Current Job Description</label>
-                <input type="text" class="form-control" id="current_job_description" name="current_job_description"  value="{{ old('current_job_description') }}">
-                <span class="text-danger">
-                  @error('current_job_description')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="date_of_joining" class="form-label">Date Of Joining</label>
-                <input type="date" class="form-control" id="date_of_joining" name="date_of_joining"  value="{{ old('date_of_joining') }}">
-                <span class="text-danger">
-                  @error('date_of_joining')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="roles_and_responsibility" class="form-label">Role And Responsibility</label>
-                <input type="text" class="form-control" id="roles_and_responsibility" name="roles_and_responsibility"  value="{{ old('roles_and_responsibility') }}">
-                <span class="text-danger">
-                  @error('roles_and_responsibility')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="salary" class="form-label">Salary</label>
-                <input type="number" class="form-control" id="salary" name="salary"  value="{{ old('salary') }}">
-                <span class="text-danger">
-                  @error('salary')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-              <div class="mb-3">
-                <label for="emergency_contact_number" class="form-label">Emergency Contact Number</label>
-                <input type="number" class="form-control" id="emergency_contact_number" name="emergency_contact_number"  value="{{ old('emergency_contact_number') }}">
-                <span class="text-danger">
-                  @error('emergency_contact_number')
-                    {{ $message }}
-                  @enderror
-                </span>
-              </div>
-
-
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-
           <div class="col-sm-4">
             <table class="table table-hover">
               <thead>
@@ -429,7 +348,7 @@
          
             </table>
             {{ $supportstaffs->links() }}
-
+          </div>
           </div>
         </div>
       </div>

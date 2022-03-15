@@ -156,7 +156,15 @@
             </a>
             
           </li>
-         
+          <li class="nav-item">
+            <a href="../notifications" class="nav-link">
+              <i class="fa-solid fa-bell"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+           
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -166,6 +174,18 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../parts" class="nav-link">
+                  <i class="fa-solid fa-clone"></i>
+                  <p>Parts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../jobcard" class="nav-link">
+                    <i class="fa-solid fa-address-card"></i>
+                  <p>Job Card</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="../consistentservice" class="nav-link">
                   <i class="fa-solid fa-recycle"></i>
@@ -178,6 +198,29 @@
                   <p>RSA Service</p>
                 </a>
               </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-store"></i>       
+                    <p>
+                EV Store
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../products" class="nav-link ">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../request" class="nav-link ">
+                <i class="fa-solid fa-code-pull-request"></i>
+                <p>Request</p>
+              </a>
+            </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -226,15 +269,7 @@
             <div class="card-header">
                 <h3 class="card-title">Bookings</h3>
               </div>   
-              <form action="" class="col-9">
-                 <div class="form-group">
-                    <input type="search" name="search" id="" class="form-control" placeholder="Search by assigned_ids"/>
-                 </div>
-                 <button class="btn btn-primary">Search</button>
-                 <a href="{{ url('/bookings') }}">
-                 <button class="btn btn-primary">Reset</button>
-                 </a>
-              </form>
+             
               <!-- /.card-header -->
             <div class="card-body">
               <table id="example1"  class="table table-bordered table-striped">
@@ -248,6 +283,8 @@
                   <th>Current Statuses</th>
                   <th>Total</th>
                   <th>Booked On</th>
+                  <th>Action</th>
+                  
                 </tr>
                 </thead>
                 <tbody>
@@ -261,6 +298,10 @@
                         <td>{{ $item->current_status }}</td>
                         <td>{{ $item->total }}</td>
                         <td>{{ $item->booked_on }}</td>
+                        <td>
+                          <a href="{{ url('../invoice') }}" class="btn btn-info btn-xs">Generate Invoice</a>
+                          <a href="{{ url('../jobcardtable') }}" class="btn btn-success btn-xs mt-2">Job Cards</a>
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -275,6 +316,7 @@
                             <th>Current Statuses</th>
                             <th>Total</th>
                             <th>Booked On</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                 </tbody>

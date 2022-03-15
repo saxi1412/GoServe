@@ -15,7 +15,7 @@ class RsaSubServiceController extends Controller
      */
     public function rsasub($id)
     {
-        $rsaservices= DB::table('subservices')->where('service_id',$id)->paginate(10);
+        $rsaservices= DB::table('subservices')->where('service_id',$id)->latest("id")->paginate(10);
         return view('viewrsaservice',['rsaservices'=> $rsaservices]);
     }
 
