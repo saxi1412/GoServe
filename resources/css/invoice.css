@@ -1,3 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
 * {
-    background-color: #787878;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    margin-bottom: 10%;
+}
+.logo{
+    width: 180px;
+    margin-top: 10px;
+}
+.logo img{
+    width: 100%;
+}
+
+.invoice__section{
+    transform: translateY(50px);
+    border: 2px double #000;
+    padding: 1rem;
+}
+
+/* .border{
+    border-right: 1px solid #000 !important;
+} */
+.flex___wrap{
+    display: grid;
+    grid-template-columns: 30% 55%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+.details{
+    word-break: break-all;
+}
+.address__text{
+    width: 100%;
+}
+.address__text p{
+    font-size: 1.3rem;
+}
+.top-b{
+    border-top: 1px solid #ccc;
+    padding: 1rem 0;
+}
+
+
+td, th{
+    border: 1px solid #000;
+    padding: 12px;
+}
+body > div:nth-child(n) > div > div > table > tbody > tr:nth-child(n) > td:nth-child(n) > h6{
+    display: inline-block;
+}
+
+.main__div{
+    border: 1px solid #000 !important;
+}
+body > div:nth-child(2) > div > div{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.table__data{
+    width: 50%;
+    overflow-x: scroll;
+}
+
+
+body > div:nth-child(1) > div > div:nth-child(2) > table > tbody > tr:nth-child(1){
+    display: none;
+}
+body > div > div > div:nth-child(2){
+    padding: 0;
+}
+
+.right__table{
+    width: 100%;
+    border: 0px solid #000;
+}
+
+body > div:nth-child(n) > div > div > table > tbody > tr:nth-child(n) > td:nth-child(n) > h6{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+/* ============Custom Horizontal bar============ */
+.shadow-scroll-x::-webkit-scrollbar {
+    height: 8px;
+    background-color: white;
+  }
+  .shadow-scroll-x::-webkit-scrollbar-thumb {
+    background-color: rgb(226, 204, 204);
+    border-radius: 10px;
+  }
+  .shadow-scroll-x::-webkit-scrollbar-button {
+    display: none;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 576px) {
+    .flex___wrap{
+        grid-template-columns: 100%;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    table{
+        width: 100%;
+    }
+    .table__data{
+        width: 100%;
+        overflow: hidden;
+    }
 }
