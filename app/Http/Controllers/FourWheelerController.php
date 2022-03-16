@@ -12,9 +12,16 @@ class FourWheelerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function four()
+    public function four(Request $req)
     {
-        $fourwheelers= DB::table('vehicles')->where("vehicle_type","four wheeler")->latest("id")->paginate(10);
+        $request=$req->all();
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $fourwheelers= DB::table('vehicles')->where("vehicle_type","four wheeler")->where('company_name','LIKE', "%$search%")->latest("id")->paginate(10);
+        }else{
+            $fourwheelers= DB::table('vehicles')->where("vehicle_type","four wheeler")->latest("id")->paginate(10);
+        }
+        $data =compact('fourwheelers','search');
         return view('fourwheeler',['fourwheelers'=>$fourwheelers]);
     }
 

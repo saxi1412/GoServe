@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class SettingController extends Controller
+class HomeSettingController extends Controller
 {
     public function setting(){
         $rsaservices= DB::table('setting')->first();
         $services=DB::table('services')->select('id','name')->get();
-        return view('setting',['rsaservices'=>$rsaservices,
+        return view('homesetting',['rsaservices'=>$rsaservices,
         'services'=>$services
     ]);
     }

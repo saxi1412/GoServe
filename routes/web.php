@@ -104,10 +104,10 @@ Route::get('/reports',
 Route::get('/complaints', 
 [App\Http\Controllers\ComplaintsController::class,'index']
 );
-Route::get('/setting', 
-[App\Http\Controllers\SettingController::class,'setting']
+Route::get('/homesetting', 
+[App\Http\Controllers\HomeSettingController::class,'setting']
 )->name('setting');
-Route::put('/setting',[App\Http\Controllers\SettingController::class,'updateSettings'])->name('updateSettings');
+Route::put('/homesetting',[App\Http\Controllers\HomeSettingController::class,'updateSettings'])->name('updateSettings');
 
 
 Route::get('/supportstaffs', 
@@ -143,7 +143,10 @@ Route::post('/addcustomer',
 Route::get('/editcustomer/{id}',[App\Http\Controllers\CustomersController::class,'editcustomer'])->name('editcustomer');
 Route::put('/editcustomer/{id}',[App\Http\Controllers\CustomersController::class,'updatecustomer'])->name('updatecustomer');
 Route::get('/deletecustomer/{id}',[App\Http\Controllers\CustomersController::class,'destroycustomer'])->name('destroycustomer');
-
+Route::get('/sendtoindividual/{id}',[App\Http\Controllers\CustomersController::class,'sendtoindividual'])->name('sendtoindividual');
+Route::post('/sendtoindividual/{id}', 
+[App\Http\Controllers\CustomersController::class,'createnotificationindividual']
+)->name('createnotificationindividual');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 
@@ -175,6 +178,10 @@ Route::post('/addoffer',[App\Http\Controllers\OffersController::class,'createoff
 Route::get('/offers', 
 [App\Http\Controllers\OffersController::class,'offer']
 )->name('offer');
+Route::get('/editoffer/{id}',[App\Http\Controllers\OffersController::class,'editoffer'])->name('editoffer');
+Route::put('/editoffer/{id}',[App\Http\Controllers\OffersController::class,'updateoffer'])->name('updateoffer');
+Route::get('/deleteoffer/{id}',[App\Http\Controllers\OffersController::class,'destroyoffer'])->name('destroyoffer');
+
 
 Route::get('/products', 
 [App\Http\Controllers\ProductsController::class,'product']
@@ -206,3 +213,32 @@ Route::get('/bulkupload',
 Route::post('/parts', 
 [App\Http\Controllers\PartsController::class,'storebulkproduct']
 )->name('storebulkproduct');
+
+Route::get('/addbrand', 
+[App\Http\Controllers\BrandsController::class,'addbrand']
+)->name('addbrand');
+Route::post('/addbrand',[App\Http\Controllers\BrandsController::class,'createbrand'])->name('createbrand');
+Route::get('/brands', 
+[App\Http\Controllers\BrandsController::class,'brand']
+)->name('brand');
+Route::get('/editbrand/{id}',[App\Http\Controllers\BrandsController::class,'editbrand'])->name('editbrand');
+Route::put('/editbrand/{id}',[App\Http\Controllers\BrandsController::class,'updatebrand'])->name('updatebrand');
+Route::get('/deletebrand/{id}',[App\Http\Controllers\BrandsController::class,'destroybrand'])->name('destroybrand');
+
+
+Route::get('/addpartsetting', 
+[App\Http\Controllers\PartSettingController::class,'addpartsetting']
+)->name('addpartsetting');
+Route::post('/addpartsetting',[App\Http\Controllers\PartSettingController::class,'createpartsetting'])->name('createpartsetting');
+Route::get('/partsetting', 
+[App\Http\Controllers\PartSettingController::class,'partsetting']
+)->name('partsetting');
+Route::get('/editpartsetting/{id}',[App\Http\Controllers\PartSettingController::class,'editpartsetting'])->name('editpartsetting');
+Route::put('/editpartsetting/{id}',[App\Http\Controllers\PartSettingController::class,'updatepartsetting'])->name('updatepartsetting');
+Route::get('/deletepartsetting/{id}',[App\Http\Controllers\PartSettingController::class,'destroypartsetting'])->name('destroypartsetting');
+
+Route::get('/notifications', 
+[App\Http\Controllers\NotificationsController::class,'notification']
+)->name('notification');
+Route::post('/sendtoindividual',[App\Http\Controllers\NotificationsController::class,'createnotification'])->name('createnotification');
+Route::get('/sendtoindividual',[App\Http\Controllers\NotificationsController::class,'sendtoall'])->name('sendtoall');

@@ -14,9 +14,16 @@ class SupportStaffsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function support()
+    public function support(Request $req)
     {
-        $supportstaffs= DB::table('users')->where('type',4)->latest("id")->paginate(10);
+        $request=$req->all();
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $supportstaffs= DB::table('users')->where('type',4)->where('name','LIKE', "%$search%")->latest("id")->paginate(10);
+        }else{
+            $supportstaffs= DB::table('users')->where('type',4)->latest("id")->paginate(10);
+        }
+        $data =compact('supportstaffs','search');
         return view('supportstaffs',['supportstaffs'=>$supportstaffs]);
     }
     public function addsupportstaff()

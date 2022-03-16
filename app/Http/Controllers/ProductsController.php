@@ -13,10 +13,17 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function product()
+    public function product(Request $req)
     {
-        $products = DB::table('products')->latest("id")->paginate(10);
-        return view('products', ['products' => $products]);
+        $request=$req->all();
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $products= DB::table('products')->where('name','LIKE', "%$search%")->latest("id")->paginate(10);
+        }else{
+            $products= DB::table('products')->latest("id")->paginate(10);
+        }
+        $data =compact('products','search');
+        return view('products',['products'=>$products]);
     }
 
     public function addproduct()

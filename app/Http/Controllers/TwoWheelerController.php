@@ -12,11 +12,19 @@ class TwoWheelerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $req)
     {
         
-        $twowheelers=DB::table('vehicles')->where("vehicle_type","two wheeler")->latest("id")->paginate(10);
+        $request=$req->all();
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $twowheelers= DB::table('vehicles')->where("vehicle_type","two wheeler")->where('company_name','LIKE', "%$search%")->latest("id")->paginate(10);
+        }else{
+            $twowheelers= DB::table('vehicles')->where("vehicle_type","two wheeler")->latest("id")->paginate(10);
+        }
+        $data =compact('twowheelers','search');
         return view('twowheeler',['twowheelers'=>$twowheelers]);
+        
 
     }
 

@@ -17,7 +17,7 @@ class EmployeesController extends Controller
     {
         $search = $request['search'] ?? "";
         if($search != ""){
-            $employees= DB::table('users')->where('name','LIKE', "%$search%")->orWhere('email','LIKE', "%$search%")->get();
+            $employees= DB::table('users')->where('name','LIKE', "%$search%")->orWhere('email','LIKE', "%$search%")->latest("id")->paginate(10);
         }else{
             $employees= DB::table('users')->where('type',1)->latest("id")->paginate(10);
         }
@@ -28,13 +28,7 @@ class EmployeesController extends Controller
     {
         return view('addemployee');
     }
-    public function search()
-    {
-        $search_text = $_GET['query'];
-        $employees= DB::table('users')->where('type',1)->where('title','LIKE','%'.$search_text.'%')->latest("id")->get();
-
-        return view('products.search',compact('products'));
-    }
+    
 
 
 

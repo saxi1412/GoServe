@@ -14,10 +14,17 @@ class GarageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function gar()
+    public function gar(Request $req)
     {
         
-        $garage= DB::table('users')->where('type',3)->latest("id")->paginate(10);
+        $request=$req->all();
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $garage= DB::table('users')->where('type',3)->where('garage_name','LIKE', "%$search%")->latest("id")->paginate(10);
+        }else{
+            $garage= DB::table('users')->where('type',3)->latest("id")->paginate(10);
+        }
+        $data =compact('garage','search');
         return view('garage',['garage'=>$garage]);
     }
     public function addgarage()

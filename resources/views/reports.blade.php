@@ -239,21 +239,41 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../setting" class="nav-link">
+            <a href="../homesetting" class="nav-link">
               <i class="fa-solid fa-gear"></i>
               <p>
-                Setting
+               Home Setting
               </p>
             </a>
           </li>
-          
           <li class="nav-item">
-            <a href="../offers" class="nav-link">
-                <i class="fa-solid fa-gift"></i>
-              <p>
-                Offers
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-gear"></i>      
+                    <p>
+                Setting
+                <i class="fas fa-angle-left right"></i>
               </p>
-            </a>  
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../brands" class="nav-link ">
+                  <i class="fa-solid fa-b"></i>
+                  <p>Brands</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../partsetting" class="nav-link ">
+                <i class="fa-solid fa-clone"></i>
+                <p>Parts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../offers" class="nav-link ">
+                <i class="fa-solid fa-gift"></i>
+                <p>Offers</p>
+              </a>
+            </li>
+            </ul>
           </li>
          
       </nav>

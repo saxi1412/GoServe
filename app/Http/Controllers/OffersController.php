@@ -69,18 +69,11 @@ class OffersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function editoffer($id)
     {
-        //
+        $offers= DB::table('offers')->find($id);
+        return view('editofferform',['offers'=>$offers]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   
 
     /**
      * Update the specified resource in storage.
@@ -89,15 +82,35 @@ class OffersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function updateoffer(Request $request, $id)
+    {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $filepath = 'dist/images/offers/' . $filename;
+            // $file->storeAs('servicesimg/',$filename);
+            $request->image->move(public_path('dist/images/offers'), $filename);
+            DB::table('offers')->where('id', $id)->update([
+            
+                'image' => $filepath,
+            ]);
+        }
+       
+        
+        return redirect(route('offer'));
+    }
     
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyoffer($id)
     {
-        //
+        DB::table('offers')->where('id',$id)->delete();
+        return redirect(route('offer'));
     }
 }

@@ -55,6 +55,7 @@ Route::post('/getBooking',[VendorController::class,'getBooking']);
 Route::post('/getTransferableUser',[VendorController::class,'getTransferableUser']);
 Route::post('/getJobCard',[VendorController::class,'getJobCard']);
 Route::post('/getBookingsHistory',[ApiController::class,'getBookingsHistory']);
+Route::post('/searchVehicle',[ApiController::class,'searchVehicle']);
 
 
 

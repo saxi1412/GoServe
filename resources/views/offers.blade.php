@@ -237,21 +237,41 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../setting" class="nav-link">
+            <a href="../homesetting" class="nav-link">
               <i class="fa-solid fa-gear"></i>
               <p>
-                Setting
+               Home Setting
               </p>
             </a>
           </li>
-          
           <li class="nav-item">
-            <a href="../offers" class="nav-link">
-                <i class="fa-solid fa-gift"></i>
-              <p>
-                Offers
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-gear"></i>      
+                    <p>
+                Setting
+                <i class="fas fa-angle-left right"></i>
               </p>
-            </a>  
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../brands" class="nav-link ">
+                  <i class="fa-solid fa-b"></i>
+                  <p>Brands</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../partsetting" class="nav-link ">
+                <i class="fa-solid fa-clone"></i>
+                <p>Parts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../offers" class="nav-link ">
+                <i class="fa-solid fa-gift"></i>
+                <p>Offers</p>
+              </a>
+            </li>
+            </ul>
           </li>
       </nav>
       <!-- /.sidebar-menu -->
@@ -282,6 +302,8 @@
                       <th scope="col">Id</th>
                       <th scope="col">Image</th>
                       <th scope="col">Active</th>
+                      <th scope="col">Action</th>
+
                     </tr>
                   </thead>
                   <tbody>
@@ -295,6 +317,10 @@
                        <td><span class="badge bg-danger">inactive</span></td>
                        @endif
                        <td>
+                        <td>
+                          <a href="{{ url('../editoffer', $offer->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                          <a href="{{ url('../deleteoffer', $offer->id) }}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></a>
+                      </td> 
                       </tr>
                     @endforeach
                   </tbody>
@@ -304,6 +330,8 @@
                             <th scope="col">Id</th>
                             <th scope="col">Image</th>
                             <th scope="col">Active</th>
+                            <th scope="col">Action</th>
+
                         </tr>
                         </tfoot>
                 </tbody>

@@ -151,8 +151,7 @@
               <p>
                 Bookings 
               </p>
-            </a>
-           
+            </a>  
           </li>
           <li class="nav-item">
             <a href="../notifications" class="nav-link">
@@ -160,8 +159,7 @@
               <p>
                 Notifications
               </p>
-            </a>
-           
+            </a> 
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -238,22 +236,42 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../setting" class="nav-link">
+            <a href="../homesetting" class="nav-link">
               <i class="fa-solid fa-gear"></i>
               <p>
-                Setting
+               Home Setting
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../offers" class="nav-link">
-                <i class="fa-solid fa-gift"></i>
-              <p>
-                Offers
+            <a href="#" class="nav-link">
+              <i class="fa-solid fa-gear"></i>      
+                    <p>
+                Setting
+                <i class="fas fa-angle-left right"></i>
               </p>
-            </a>  
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../brands" class="nav-link ">
+                  <i class="fa-solid fa-b"></i>
+                  <p>Brands</p>
+                </a>
+              </li>
+            <li class="nav-item">
+              <a href="../partsetting" class="nav-link ">
+                <i class="fa-solid fa-clone"></i>
+                <p>Parts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../offers" class="nav-link ">
+                <i class="fa-solid fa-gift"></i>
+                <p>Offers</p>
+              </a>
+            </li>
+            </ul>
           </li>
-          
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -262,144 +280,56 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
+      <div class="container-fluid mt-5" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"> Settings
-            </h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Settings</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+            <div class="card">
+              <div class="card-header">
+                <h4>Send To Individual
+                    
+                </h4>
+              </div>
+            </div>
+              <div class="card-body">
+                
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @csrf
+                   
+                
+                  
+                  
 
-    <!-- Main content -->
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h4 class="pl-3"> Home Settings
-        </h4>
-      </div><!-- /.col -->
-      
-    </div><!-- /.row -->
-    
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h6 class="pl-5"> Banners
-        </h6>
-      </div><!-- /.col -->
-      
-    </div><!-- /.row -->
-    <div class="card-body">
-      <form action="" method="POST" enctype="multipart/form-data">
-        @csrf
-        
-      @method('PUT')
-        
-      <div class="mb-3">
-        <label for="img1" class="form-label">Image1</label>
-        <input type="file" class="form-control" id="img1" name="img1" value="{{ $rsaservices->img1 }}" value="{{ old('img1') }}">
-        <span class="text-danger">
-          @error('img1')
-            {{ $message }}
-          @enderror
-        </span>
-      </div>
-      <img height="100px" class="m-5"src="{{ $rsaservices->img1 }}"/>  
-      <br/> 
-      <div class="mb-3">
-        <label for="img2" class="form-label">Image2</label>
-        <input type="file" class="form-control" id="img2" name="img2" value="{{ $rsaservices->img2 }}" value="{{ old('img2') }}">
-        <span class="text-danger">
-          @error('img2')
-            {{ $message }}
-          @enderror
-        </span>
-      </div>
-      <img height="100px" class="m-5"src="{{ $rsaservices->img2 }}"/>  
-      <br/> 
-      <div class="mb-3">
-        <label for="img3" class="form-label">Image3</label>
-        <input type="file" class="form-control" id="img3" name="img3" value="{{ $rsaservices->img3 }}" value="{{ old('img3') }}">
-        <span class="text-danger">
-          @error('img3')
-            {{ $message }}
-          @enderror
-        </span>
-      </div>
-      <img height="100px" class="m-5"src="{{ $rsaservices->img3 }}"/>  
-      <br/> 
-      <div class="mb-3">
-        <label for="img4" class="form-label">Image4</label>
-        <input type="file" class="form-control" id="img4" name="img4" value="{{ $rsaservices->img4 }}" value="{{ old('img4') }}">
-        <span class="text-danger">
-          @error('img4')
-            {{ $message }}
-          @enderror
-        </span>
-      </div>
-      <img height="100px" class="m-5"src="{{ $rsaservices->img4 }}"/>  
-      <br/> 
-      <div class="mb-3">
-        <label for="img5" class="form-label">Image5</label>
-        <input type="file" class="form-control" id="img5" name="img5" value="{{ $rsaservices->img5 }}" value="{{ old('img5') }}">
-        <span class="text-danger">
-          @error('img5')
-            {{ $message }}
-          @enderror
-        </span>
-      </div>
-      <img height="100px" class="m-5"src="{{ $rsaservices->img5 }}"/>  
-      <br/> 
-      @for ($i = 1; $i < 6; $i++)
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Service{{ $i }}</label>
-            <select id="select{{ $i }}" class="form-control select2" style="width: 100%;">
-              @if (get_object_vars($rsaservices)['service'.$i]==0)
-              <option selected value='0'>--select service--</option>
-              @else
-              <option value='0'>--select service--</option>
-              @endif
-              @foreach ($services as $item)
-            
-               @if (get_object_vars($rsaservices)['service'.$i]==get_object_vars($item)['id'])
-               <option selected value='{{ $item->id }}'>{{$item->name}}</option>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title"  value="{{ old('title') }}">
+                        <span class="text-danger">
+                          @error('title')
+                            {{ $message }}
+                          @enderror
+                        </span>
+                      </div>
 
-               @else
-               <option value='{{ $item->id }}'>{{$item->name}}</option>
-               @endif
-               
-           @endforeach
-            </select>
-          </div>
+                      <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <input type="text" class="form-control" id="message" name="message"  value="{{ old('message') }}">
+                        <span class="text-danger">
+                          @error('message')
+                            {{ $message }}
+                          @enderror
+                        </span>
+                      </div>
+                   
+                    
+                    <button type="submit" class="btn btn-primary">Send</button>
+                  </form>      
+              </div>
+              </div>
+            </div>
         </div>
-      </div>
-      @endfor
-      @for ($i = 1; $i < 6; $i++)
-      <div style="display: none">
-        {{ $y=0}}
-       </div>      
-                @foreach ($services as $item)
-               @if (get_object_vars($rsaservices)['service'.$i]==get_object_vars($item)['id'])
-               <div style="display: none">
-                {{ $y=$item->id }}
-               </div> 
-               @endif
-           @endforeach
-           <input type="hidden" id="service{{ $i }}" name="service{{ $i }}" value="{{ $y }}">
-      @endfor
-        <button type="submit" class="btn btn-primary">Update</button>
-      </form>
     </div>
+    </div>
+    
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

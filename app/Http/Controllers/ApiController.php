@@ -99,13 +99,17 @@ class ApiController extends Controller
         $response['banners'] = $res;
         $response['services'] = array();
         $res = DB::table('setting')->first();
-    
-            $response['services']= DB::table('services')->get();
-        
+
+        $response['services'] = DB::table('services')->get();
+
         if (isset($req['user_id'])) {
             $user = DB::table('users')->select('name', 'image')->where('id', $req['user_id'])->first();
             $response['profile'] = $user;
         }
+
+        $response['brands'] = DB::table('brands')->get();
+        $response['parts'] = DB::table('partsetting')->get();
+        $response['offers'] = DB::table('offers')->get();
         return $this->successfulResponse('Home Page', $response);
     }
     public function systemCheck()
@@ -115,12 +119,29 @@ class ApiController extends Controller
         ];
         return response()->json($data);
     }
-    public function getBookingsHistory()
+    public function getBookingsHistory(Request $request)
     {
-        $data = [
-            'status' => 1,
-        ];
-        return response()->json($data);
+
+        try {
+            $req = $request->all();
+            $booking = DB::table("bookings")->where("user_id", $req["user_id"])->get();
+            $response["bookings"] = array();
+            foreach ($booking as $b) {
+                $tmp["id"] = $b->id;
+                $vehicle = DB::table('customer_vehicles')->where("id", $b->vehicle_id)->first();
+                $userV = DB::table('vehicles')->where("id", $vehicle->vehicle_id)->first();
+                $tmp["vehicle"] = $userV->company_name . " " . $userV->model_name;
+                $tmp["vehicle_image"] = $userV->image;
+                $tmp["registration_number"] = $vehicle->registration_number;
+                $tmp["status"] = $b->current_status;
+                array_push($response["bookings"], $tmp);
+            }
+
+
+            return $this->successfulResponse("bookings", $response);
+        } catch (\Exception $e) {
+            return $this->failureResponse($e->getMessage());
+        }
     }
     public function getVehicle(Request $request)
     {
@@ -160,7 +181,7 @@ class ApiController extends Controller
         $res = DB::table("bookings")->select("id")->where("user_id", $req["user_id"])->where("current_status", "cart")->first();
         if ($res) {
             $cart = array([
-                "cart"=>now()
+                "cart" => now()
             ]);
             $ren = DB::table("bookings")
                 ->where("user_id", $req["user_id"])
@@ -259,6 +280,22 @@ class ApiController extends Controller
             }
         }
     }
+
+    public function searchVehicle(Request $request)
+    {
+        try {
+       
+       
+                $response["vehicles"]= DB::table("vehicles")->where(DB::raw('lower(model_name)'), 'LIKE' ,'%'. strtolower($request->search) . '%')
+                ->orWhere(DB::raw('lower(company_name)'), 'LIKE' ,'%'. strtolower($request->search) . '%')
+                ->get();
+            
+            return$this->successfulResponse("vehicles", $response);
+        } catch (\Exception $e) {
+            return $this->failureResponse($e);
+        }
+    }
+
     public function getCart(Request $request)
     {
         $req = $request->all();
@@ -314,52 +351,52 @@ class ApiController extends Controller
     }
     public function getEvProduct(Request $request)
     {
-        $req=$request->all();
-        $res = DB::table("products")->where('id',$req["id"])->first();
-        
-            $tmp["product"] = $res;
-            $tmp["specifications"] = DB::table("product_specifications")->where("product_id", $request->id)->get();
-            $response["product"]= $tmp;
-        
+        $req = $request->all();
+        $res = DB::table("products")->where('id', $req["id"])->first();
+
+        $tmp["product"] = $res;
+        $tmp["specifications"] = DB::table("product_specifications")->where("product_id", $request->id)->get();
+        $response["product"] = $tmp;
+
         return $this->successfulResponse("EV Store Products", $response);
     }
     public function placeBooking(Request $request)
     {
-        
-        $req=$request->all();
-            $res = DB::table("bookings")->where("user_id", $req["user_id"])->where("current_status", "cart")->first();
 
-        $status=json_decode($res->statuses,true);
-        $tmp["new"]=now();
-        array_push($status,$tmp);
+        $req = $request->all();
+        $res = DB::table("bookings")->where("user_id", $req["user_id"])->where("current_status", "cart")->first();
 
-        $res = DB::table("bookings")->where("current_status","cart")->where('user_id',$req['user_id'])->update([
-            "message"=>$req["message"],
-            "timeslot"=>$req["time_slot"],
-            "booking_date"=>$req["month_slot"],
-            "payment_method"=>$req["payment_method"],
-            "current_status"=>"new",
-            "statuses"=>json_encode($status)
+        $status = json_decode($res->statuses, true);
+        $tmp["new"] = now();
+        array_push($status, $tmp);
+
+        $res = DB::table("bookings")->where("current_status", "cart")->where('user_id', $req['user_id'])->update([
+            "message" => $req["message"],
+            "timeslot" => $req["time_slot"],
+            "booking_date" => $req["month_slot"],
+            "payment_method" => $req["payment_method"],
+            "current_status" => "new",
+            "statuses" => json_encode($status)
 
         ]);
-        
-            
-        $res= DB::table("bookings")
-        ->where('user_id',$req['user_id'])
-        ->where("current_status", "new")
-        ->latest('id')
-        ->first();
 
-        $response["id"]=$res->id;
 
-        $res=DB::table("users")
-        ->select("fcm_token")
-        ->where("type","1")
-        ->whereNotNull("fcm_token")
-        ->get();
+        $res = DB::table("bookings")
+            ->where('user_id', $req['user_id'])
+            ->where("current_status", "new")
+            ->latest('id')
+            ->first();
 
-        foreach($res as $r){
-            $this->sendFCM("New Booking Received","Booking ID: ".$response["id"],$r->fcm_token);
+        $response["id"] = $res->id;
+
+        $res = DB::table("users")
+            ->select("fcm_token")
+            ->where("type", "1")
+            ->whereNotNull("fcm_token")
+            ->get();
+
+        foreach ($res as $r) {
+            $this->sendFCM("New Booking Received", "Booking ID: " . $response["id"], $r->fcm_token);
         }
 
         return $this->successfulResponse("booking", $response);
@@ -484,38 +521,21 @@ class ApiController extends Controller
     {
 
         $req = $request->all();
-        if (!isset($req['vehicle_type'])) {
-            return $this->failureResponse("please select vehicle type");
-        }
-        if (!isset($req['fuel_type'])) {
-            return $this->failureResponse("please select fuel type");
-        }
-        if (!isset($req['cname'])) {
-            return $this->failureResponse("please select company name");
-        }
+      
 
-        $res = DB::table("vehicles")
-            ->select('id')
-            ->where('vehicle_type', strtolower($req['vehicle_type']))
-            ->where('fuel_type', $req['fuel_type'])
-            ->where('company_name', strtolower($req['cname']))
-            ->where('model_name', strtolower($req['mname']))->first();
 
-        if ($res) {
             DB::table("customer_vehicles")
                 ->insert(
                     [
                         "user_id" => $req["user_id"],
-                        "vehicle_id" => $res->id,
+                        "vehicle_id" => $req["vehicle_id"],
                         "registration_number" => $req["rnumber"],
                         "owner_name" => $req["oname"]
                     ]
                 );
             $response["status"] = "true";
             return $this->successfulResponse("saved", $response);
-        } else {
-            return $this->failureResponse("please select valid vehicle");
-        }
+      
     }
 
     public function getVehicleCompany(Request $request)
@@ -621,7 +641,7 @@ class ApiController extends Controller
         //
     }
 
- 
+
 
     public static function sendFCM($title, $message, $target = 0)
     {
